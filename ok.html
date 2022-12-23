@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            width: 100vw;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .moveBlock {
+            width: 10vw;
+            height: 10vw;
+            background-color: rgb(92, 75, 201);
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="moveBlock"></div>
+
+    <script>
+        let el = document.querySelector('.moveBlock');
+        let coordx = 0;
+        let coordy = 0;
+        document.body.addEventListener('keyup', showEvent);
+        document.body.addEventListener('keydown', showEvent);
+        function showEvent(){
+            switch(event.code){
+                case 'ArrowUp':
+                    if (coordy-10 >= 0) {
+                        coordy -= 10;
+                        el.style.top = `${coordy}px`;
+                    
+                    }
+                    break
+                case 'ArrowDown':
+                    if (coordy + (parseInt(getComputedStyle(el).height)) <= document.body.offsetHeight) { 
+                        coordy += 10;
+                        el.style.top = `${coordy}px`;
+                        
+                    }
+                    break
+                case 'ArrowLeft':
+                    if (coordx - 10 >= 0) {
+                        coordx -= 10;
+                        el.style.left = `${coordx}px`;
+                    }
+                    break
+                case 'ArrowRight':
+                    if (coordx + (parseInt(getComputedStyle(el).width)) <= document.body.offsetWidth) { 
+                        coordx += 10;
+                        el.style.left = `${coordx}px`;
+                    }
+                    break
+                
+
+            }
+        }
+    </script>
+</body>
+</html>
